@@ -22,4 +22,18 @@ plt.xlabel('Predicted'); plt.ylabel('Actual'); plt.show()
 
 # Look at specific misclassified digits
 wrong_idx = np.where(preds != y_test)[0]
+
+plt.figure(figsize=(10,6))
+
+for i in range(20):
+    idx = wrong_idx[i]
+
+    plt.subplot(4,5, i+1)
+    plt.imshow(x_test[idx], cmap="gray")
+    plt.title(f"A:{y_test[idx]} P:{preds[idx]}")
+    plt.axis("off")
+
+plt.tight_layout()
+plt.show()
+
 print(f"{len(wrong_idx)} misclassified out of {len(y_test)}")
